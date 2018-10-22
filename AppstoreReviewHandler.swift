@@ -25,14 +25,12 @@ class AppstoreReviewHandler: NSObject {
         appLaunches += 1
         defaults.set(appLaunches, forKey: REVIEW_SESSION_COUNT_KEY)
         defaults.synchronize()
-        //TODO - Add Analytics event ?!
     }
     
     public func tryToGetAppstoreReview() {
         let appLaunches = defaults.integer(forKey: REVIEW_SESSION_COUNT_KEY)
         if  appLaunches >= MINIMUM_APP_LAUNCHES_UNTIS_FIRST_REQUEST {
             self.askForReview()
-            //TODO - Add Analytics event ?!
         }
     }
     
@@ -41,7 +39,6 @@ class AppstoreReviewHandler: NSObject {
             // Note that this is not shown every time you want it.
             // Apple handles it in their own way so that a user will see it max three times a year.
             SKStoreReviewController.requestReview()
-            //TODO - Add Analytics event ?!
         }
     }
 }
